@@ -1,80 +1,15 @@
 import express from 'express';
-import db from './database/connection';
-import conveterHourToMinutes from './utils/convertHourToMinutes';
+import ClassesController from './controllers/ClassesController';
+import ConnectionsController from './controllers/ConnectionsController';
 
 const routes = express.Router();
+const classesController  = new ClassesController();
+const connectionsController = new ConnectionsController();
 
-interface ScheduleItem {
-    week_day: number;
-    from: string;
-    to: string;
-}
+routes.get('/classes', classesController.index );
+routes.post('/classes', classesController.create );
 
-routes.post('/classes', async (request, response) => {
-    const {
-        name,
-        avatar,
-        whatsapp,
-        bio,
-        subject,
-        cost,
-        schedule
-    } = request.body;
-
-    /*
-    *
-    * Evita erros em partes do código,
-    *caso houver um erro nada será mantido,
-    *tudo será desfeito para uma nova tentativa manual.
-    */
-
-    const trx = await db.transaction();
-
-    try {
-
-            const insertedUsersIds = await trx('users').insert({
-        name,
-        avatar,
-        whatsapp,
-        bio,
-    });
-
-    const user_id = insertedUsersIds[0];
-
-    const insertedClassesIds = await trx('classes').insert({
-        subject,
-        cost,
-        user_id,
-    })
-
-    const class_id = insertedClassesIds[0];
-
-    const classSchedule = schedule.map((scheduleItem: ScheduleItem) => {
-        return {
-
-            class_id,
-            week_day: scheduleItem.week_day,
-            from: conveterHourToMinutes(scheduleItem.from),
-            to: conveterHourToMinutes(scheduleItem.to),
-        };
-    })
-
-    await trx('class_schedule').insert(classSchedule);
-
-    await trx.commit();
-    
-    return response.status(201).send('Success user was created.');
-
-    }catch(err) {
-        //Caso de erro trx.rollback() desfaz as alterações no banco
-        await trx.rollback();
-
-        return response.status(400).json({
-            error: 'Unexpected error while creating new class'
-        })
-    }
-});
-
-
+routes.get('/connections', connectionsController.index);
+routes.post('/connections', connectionsController.create);
 
 export default routes;
