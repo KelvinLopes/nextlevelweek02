@@ -1,0 +1,3 @@
+[submodule "nlw/mobile"]
+	path = nlw/mobile
+	url = https://github.com/KelvinLopes/nextlevelweek02/tree/master/nlw
