@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Image } from 'react-native';
+import { View, Image, Text } from 'react-native';
 import styles from './styles';
 import { BorderlessButton } from 'react-native-gesture-handler';
 import backIcon from '../../assets/images/icons/back.png';
@@ -20,6 +20,8 @@ function PageHeader() {
 
                      <Image source={logoImg} resizeMode="contain"/>
                 </View>
+
+                <Text style={styles.title}>Proffys disponíveis</Text>
             </View>
         );
 }
