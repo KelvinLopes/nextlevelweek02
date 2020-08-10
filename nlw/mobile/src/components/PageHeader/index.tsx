@@ -5,7 +5,12 @@ import { BorderlessButton } from 'react-native-gesture-handler';
 import backIcon from '../../assets/images/icons/back.png';
 import logoImg from '../../assets/images/logo.png';
 
-function PageHeader() {
+
+ interface PageHeaderProps {
+        title: string;
+    }
+
+const PageHeader:React.FC<PageHeaderProps> = ({ title }) => {
 
     function handleGoBack() {
       
@@ -21,7 +26,7 @@ function PageHeader() {
                      <Image source={logoImg} resizeMode="contain"/>
                 </View>
 
-                <Text style={styles.title}>Proffys disponíveis</Text>
+                <Text style={styles.title}>{title}</Text>
             </View>
         );
 }
