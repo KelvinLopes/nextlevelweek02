@@ -49,10 +49,13 @@ __Problemas de conexão com o Expo-Cli__
 
   ```~/Android/Sdk/platform-tools/adb devices ```
   
-  __Libere as portas__ 19000, 19001 e 19002 caso estiver no Linux, sempre que reiniciar o sistema precisará executar novamente esses comandos:
+  __Instale o Ip Tables__
   
   *  ``` sudo apt update ```,
   * ``` sudo apt install iptables ```,
+  
+  __Libere as portas__ 19000, 19001 e 19002 caso estiver no Linux, sempre que reiniciar o sistema precisará executar novamente esses comandos:
+  
   * ``` sudo /sbin/iptables -I INPUT -p tcp --dport 19000 -j ACCEPT ```,
   * em seguida  ``` sudo /sbin/iptables -I INPUT -p tcp --dport 19001 -j ACCEPT ```,
   * e após ``` sudo /sbin/iptables -I INPUT -p tcp --dport 19002 -j ACCEPT ``` 
@@ -61,7 +64,7 @@ __Problemas de conexão com o Expo-Cli__
 
 
 # Dicas
-## Atualize/instale a libs
+## Atualize/instale as libs
 
 
  Para isso, rode com o comando ``` yarn upgrade ``` e ``` yarn ```
