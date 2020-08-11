@@ -1,5 +1,10 @@
 # Proffy
 
+<p align="center"> 
+  <img align="center"       src="https://raw.githubusercontent.com/KelvinLopes/nextlevelweek02/22df49aef153e518e01cdacc82d354f8f6c8430c/nlw/web/src/assets/images/landing.svg" width="800" heigth="900" align="center" alt="Proffy" />
+ </p>
+ 
+ 
 <p>
   Objetivo do Proffy é conectar alunos e professores, facilitando a comunicação entre eles.
   Onde se tem conhecimento se cria as melhores soluções, por isso é muito importante o aprendizado de todo ser humano
